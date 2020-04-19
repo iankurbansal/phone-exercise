@@ -1,4 +1,4 @@
-package com.phone.exercise.entity;
+package com.phone.exercise.model;
 /**
  * 
  * @author Ankur Bansal

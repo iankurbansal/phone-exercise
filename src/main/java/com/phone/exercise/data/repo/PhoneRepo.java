@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.phone.exercise.entity.Phone;
+import com.phone.exercise.model.Phone;
 
 /**
  * spring repository to deal with User table

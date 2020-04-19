@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 //@EnableJpaRepositories("com.phone.exercise.dbRepo")
-@ComponentScan(basePackages = {"com.phone.exercise.restRepo","com.phone.exercise.service"})
+@ComponentScan(basePackages = {"com.phone.exercise.restRepo","com.phone.exercise.controller"})
 @EntityScan("com.phone.exercise.entity")
 public class PhoneExerciseApplication {
 

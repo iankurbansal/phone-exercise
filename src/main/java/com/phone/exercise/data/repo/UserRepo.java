@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.phone.exercise.entity.User;
+import com.phone.exercise.model.User;
 
 /**
  * spring repository to deal with User table
@@ -13,4 +13,6 @@ import com.phone.exercise.entity.User;
  *
  */
 public interface UserRepo extends CrudRepository<User, UUID> {
+	
+	
 }

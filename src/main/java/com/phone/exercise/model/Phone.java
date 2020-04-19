@@ -1,5 +1,5 @@
 
-package com.phone.exercise.entity;
+package com.phone.exercise.model;
 
 import java.util.UUID;
 

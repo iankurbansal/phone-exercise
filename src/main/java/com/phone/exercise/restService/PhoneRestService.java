@@ -1,11 +1,11 @@
-package com.phone.exercise.restRepo;
+package com.phone.exercise.restService;
 
 import java.util.UUID;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.phone.exercise.entity.Phone;
+import com.phone.exercise.model.Phone;
 /**
  * 
  * @author Ankur Bansal
@@ -13,6 +13,6 @@ import com.phone.exercise.entity.Phone;
  *
  */
 @RepositoryRestResource(collectionResourceRel = "phones", path = "phones")
-public interface PhoneRestRepo extends PagingAndSortingRepository<Phone, UUID> {
+public interface PhoneRestService extends PagingAndSortingRepository<Phone, UUID> {
 
 }
