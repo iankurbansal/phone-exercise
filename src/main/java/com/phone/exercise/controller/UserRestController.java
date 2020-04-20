@@ -2,6 +2,8 @@ package com.phone.exercise.controller;
 
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +40,7 @@ public class UserRestController {
 	@Autowired
 	PhoneRepo phoneRepo;
 	private ObjectMapper objectMapper = new ObjectMapper();
+	Logger logger = LoggerFactory.getLogger(UserRestController.class);
 
 	/**
 	 * Adds a phone to a given user and saves the phone in DB
@@ -46,6 +49,7 @@ public class UserRestController {
 	 */
 	@GetMapping("/users/addPhone/{userId}/{phoneId}")
 	public void addPhoneToUser(@PathVariable String userId,@PathVariable String phoneId) {
+		logger.debug("requested to add {} phone to {} user",phoneId, userId);
 		User user = userRepo.findById(UUID.fromString(userId) ).orElseThrow(UserNotFoundException::new);
 		Phone phone = phoneRepo.findById(UUID.fromString(phoneId)).orElseThrow(PhoneNotFoundException::new);
 		phone.setUser(user);
@@ -62,6 +66,7 @@ public class UserRestController {
 	 */
 	@PostMapping("/users/removePhone/{userId}/{phoneId}")
 	public void removePhoneFromUser(@PathVariable String userId,@PathVariable String phoneId) {
+		logger.debug("requested to remove {} phone  from {} user",phoneId,userId);
 		Phone phone = phoneRepo.findByPhoneNumber(phoneId);
 		if(phone==null) {
 			phone = phoneRepo.findById(UUID.fromString(phoneId)).orElseThrow(PhoneNotFoundException::new);
@@ -74,6 +79,7 @@ public class UserRestController {
 	@PatchMapping(path = "/users/changePreferredNumber/{userId}", consumes = "application/json-patch+json")
 	public ResponseEntity<User> updateUser(@PathVariable String userId,
 			@RequestBody JsonPatch patch) {
+		logger.debug("requested to changePreferredNumber for {} user",userId);
 		try {
 			User user = userRepo.findById(UUID.fromString(userId)).orElseThrow(UserNotFoundException::new);
 			User userPatched = applyPatchToUser(patch, user);
